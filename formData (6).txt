@@ -1,0 +1,11 @@
+ Name: RH6887582 
+ Age: 23 
+ DOB: 2020-10-03 
+ Country: India 
+ Gender: Male
+Favourite Color: #ff0000
+Email ID: hariharan@gmail.com
+Start time: 01:03
+Web Address: www.hari.com
+CGPA: 5
+Languages:Java

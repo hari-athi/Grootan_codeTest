@@ -1,0 +1,148 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+<title>FORM</title>
+<style type="text/css">
+	label{
+   text-align:left;
+  padding-right:20px;
+  display:inline-block;
+  min-width:150px;
+}
+
+ button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+}
+
+</style>
+</head>
+<body>  
+<div id="result">
+<form method="post" action="" id="formToSave">
+	<h2>GROOTAN TEST</h2>
+	<h3>Round 2</h3>
+  <label>Name</label>
+  <input type="text" name="username" id="un" required> 
+  <br>
+  <br> 
+  <label>Age</label> 
+  <input type="text" name="age" id="age" required> 
+  <br>
+  <br>
+  <label>Country</label> 
+        <select name="country" id="country" required> 
+            <option value="India">India</option> 
+            <option value="Sri Lanka">Kenya</option> 
+            <option value="Australia">Australia</option> 
+        </select> 
+   <br>
+   <br>
+   <label>DOB</label>
+   <input type="date" name="birth" id="dob" required> 
+   <br>
+   <br>
+   <label>Gender</label>  
+        <input type="radio" name="gender" id="gender" value="Male">Male 
+    <input type="radio" name="gender"  id="gender"  value="Female">Female 
+    <input type="radio" name="gender"  id="gender" value="Others">Others 
+    <br>
+    <br>
+    <label>Languages Known</label> 
+        <select name="Languages" id="languages" required> 
+            <option value="Java">Java</option> 
+            <option value="Python">Python</option> 
+            <option value="Ruby">Ruby</option> 
+        </select> 
+    <br>
+    <br>
+    <label>Favourite Color</label>
+    <input type="color" id="fc" name="favcolor" value="#ff0000" required>
+    <br>
+    <br>
+    <label>Upload Photograph</label>
+    <input type="file" name="img" accept="image/png" id="img" required>
+    <br>
+    <br>
+    <label>Email id</label>
+  <input type="text" name="email_id" id="email" required> 
+  <br> 
+  <br>
+  <label>Start Time</label>
+  <input type="time" name="time" id="st" required>
+  <br>
+  <br>
+  <label>Website Address</label>
+  <input type="text" name="web_address" id="wa" required> 
+  <br>
+  <br>
+  <label>CGPA</label> 
+  <input type="range" id="cgpa" name="cgpa" min="1" max="10" value="5" required>
+  <br>
+  <br>
+  <input type="button" name="submit" value="SUBMIT" onclick="saveFile()"> 
+
+</div>
+</form>  
+
+</body> 
+ <script>
+let saveFile = () => {
+ 
+    	const name = document.getElementById('un');
+        const age = document.getElementById('age');
+        const country= document.getElementById('country');
+        const DOB= document.getElementById('dob');
+        const gender= document.getElementById('gender');
+	const languages= document.getElementById('languages');
+        const favColor = document.getElementById('fc');
+	const email = document.getElementById('email');
+	const start= document.getElementById('st');
+	const webAddress= document.getElementById('wa');
+	const cgpa= document.getElementById('cgpa');
+	const img = document.getElementById('img');
+        
+        let data = 
+            '\r Name: ' + name.value + ' \r\n ' + 
+            'Age: ' +age.value + ' \r\n ' + 
+            'DOB: ' + DOB.value + ' \r\n ' + 
+            'Country: ' + country.value + ' \r\n ' + 
+            'Gender: ' + gender.value + '\r\n' +
+ 'Favourite Color: ' + favColor.value + '\r\n' +
+ 'Email ID: ' + email.value + '\r\n' +
+ 'Start time: ' + start.value + '\r\n' +
+ 'Web Address: ' + webAddress.value + '\r\n' +
+ 'CGPA: ' + cgpa.value + '\r\n' +
+	'Languages:'+ languages.value ;
+    
+        
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = 'formData.txt';	  
+        var link = document.createElement('a');
+link.download = 'Download.jpg';
+
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+	console.log('entering');
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+	link.href	= img;
+console.log('entering url')
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+link.href	= img;
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+document.body.appendChild(link);
+console.log('entering ytyh')
+        }
+
+        newLink.click(); 
+link.click();
+    }
+</script>
+</html> 
